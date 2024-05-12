@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- JavaScript function to load content dynamically -->
+    <script>
+        function loadContent(pageName) {
+            let url = pageName + ".xhtml";
+            document.getElementById('contentFrame').src = url;
+        }
+    </script>
+
+    <p:toolbar style="float: right;">
+        <p:toolbarGroup>
+            <p:menu>
+                <p:submenu label="Actions">
+                    <!-- Use onclick event to call loadContent function with respective page name -->
+                    <p:menuitem value="Accueil" onclick="loadContent('accueil')" />
+                    <p:menuitem value="Ajouter une Demande" onclick="loadContent('ajouterDemande')" />
+                    <p:menuitem value="Chercher une Demande" onclick="loadContent('rechercheDemande')" />
+                </p:submenu>
+            </p:menu>
+        </p:toolbarGroup>
+        <p:separator />
+    </p:toolbar>
+
+</ui:composition>
