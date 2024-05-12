@@ -1,0 +1,36 @@
+.container {
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    
+}
+.menu {
+    border: 1px solid #ccc;
+    margin: 30px;
+    width: 200px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #495057;
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 15px;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: #ddd;
+  }
+  
