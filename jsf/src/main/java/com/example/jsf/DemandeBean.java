@@ -49,4 +49,11 @@ public class DemandeBean implements Serializable {
         }
         return resultat;
     }
+
+    public void updateData(String data) {
+        // Assuming data is JSON formatted
+        // Parse JSON and update demande or listDemandes accordingly
+        // For simplicity, let's just print the received data
+        System.out.println("Received data from JavaScript: " + data);
+    }
 }
