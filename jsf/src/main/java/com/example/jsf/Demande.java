@@ -1,8 +1,9 @@
 package com.example.jsf;
 
 
+import java.io.Serializable;
 
-public class Demande {
+public class Demande implements Serializable {
 
     private String about ;
 
