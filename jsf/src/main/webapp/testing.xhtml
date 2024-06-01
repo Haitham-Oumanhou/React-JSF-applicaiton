@@ -22,9 +22,11 @@
                 const data = event.data;
 
                 console.log('data sent to javascript:', data);
+                const jsonData = JSON.stringify(data);
+
 
                 // Call the remote command with the data
-                sendToBean([{ name: 'iframeData', value: data }]);
+                sendToBean([{ name: 'iframeData', value: jsonData }]);
 
 
             }

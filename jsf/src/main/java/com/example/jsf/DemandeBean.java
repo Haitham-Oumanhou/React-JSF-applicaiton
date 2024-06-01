@@ -3,10 +3,14 @@ package com.example.jsf;
 import jakarta.faces.bean.ManagedBean;
 import jakarta.faces.bean.SessionScoped;
 import jakarta.faces.context.FacesContext;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @ManagedBean
 @SessionScoped
@@ -54,6 +58,16 @@ public class DemandeBean implements Serializable {
     public void logDataFromIframe() {
         String data = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("iframeData");
         System.out.println("Received data from iframe: " + data);
+
+        // Parse the JSON string into a Map
+        Gson gson = new Gson();
+        Type type = new TypeToken<Map<String, String>>(){}.getType();
+        Map<String, String> dataMap = gson.fromJson(data, type);
+
+        // Log the parsed data
+        for (Map.Entry<String, String> entry : dataMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
     }
 
 }
