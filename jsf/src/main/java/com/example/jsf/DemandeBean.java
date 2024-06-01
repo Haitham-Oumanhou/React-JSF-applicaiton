@@ -2,6 +2,7 @@ package com.example.jsf;
 
 import jakarta.faces.bean.ManagedBean;
 import jakarta.faces.bean.SessionScoped;
+import jakarta.faces.context.FacesContext;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class DemandeBean implements Serializable {
 
     public void ajouterDemande() {
         ListDemandes.add(demande);
-        demande = new Demande(); // Reset demande after adding
+        demande = new Demande();
 
     }
 
@@ -49,4 +50,10 @@ public class DemandeBean implements Serializable {
         }
         return resultat;
     }
+
+    public void logDataFromIframe() {
+        String data = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("iframeData");
+        System.out.println("Received data from iframe: " + data);
+    }
+
 }

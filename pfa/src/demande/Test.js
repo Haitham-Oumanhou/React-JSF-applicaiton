@@ -13,7 +13,7 @@ function AjouterDemande() {
       window.parent.postMessage(nouvelleDemande, 'http://localhost:8080/jsf-1.0-SNAPSHOT/');
       setNouvelleDemande({ nom: '', description: '' });
     }
-    console.log(nouvelleDemande);
+    //console.log(nouvelleDemande);
   };
 
   return (

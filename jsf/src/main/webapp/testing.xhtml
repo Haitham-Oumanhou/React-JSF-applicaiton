@@ -1,26 +1,37 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
 
+    <h:body>
+
+        <h:form>
+            <p:remoteCommand name="sendToBean" action="#{demandeBean.logDataFromIframe}" process="@this">
+                <f:param name="iframeData" value="" />
+            </p:remoteCommand>
+        </h:form>
+
+        <script>
+            window.addEventListener('message', handleMessage);
+
+            function handleMessage(event) {
+
+                if (event.origin !== 'http://localhost:3000') return;
+
+                const data = event.data;
+
+                console.log('data sent to javascript:', data);
+
+                // Call the remote command with the data
+                sendToBean([{ name: 'iframeData', value: data }]);
 
 
-    <iframe id="contentFrame" src="http://localhost:3000/add" frameborder="0" style="height: 600px;"></iframe>
-    <script>
-        window.addEventListener('message', handleMessage);
+            }
+        </script>
 
-        function handleMessage(event) {
-            // Check origin to prevent security issues
-            if (event.origin !== 'http://localhost:3000') return;
-
-            // Data sent from the iframe
-            const data = event.data;
-
-            // Process data as needed
-            console.log('Received data from iframe:', data);
-        }
-    </script>
+        <iframe id="contentFrame" src="http://localhost:3000/add" frameborder="0" style="height: 600px;"></iframe>
 
 
-
+    </h:body>
 </ui:composition>
