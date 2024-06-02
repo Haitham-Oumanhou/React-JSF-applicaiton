@@ -1,7 +1,7 @@
-import AjouterDemandeJsf from './demande/Test';
+import AjouterDemandeJsf from './demande/AjouterDemandeJsf';
 import AjouterDemande from './demande/AjouterDemande'; 
 import ListeDemandes from './demande/ListeDemandes';
-import RechercherDemande from './demande/RechercherDemande';
+import RechercherDemandeJsf from './demande/RechercherDemandeJsf';
 import Home from './home/Home';
 
 
@@ -17,7 +17,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/list" element={<ListeDemandes />}/>
             <Route path="/add" element={<AjouterDemande />} />
-            <Route path="/search" element={<RechercherDemande />} />
+            <Route path="/search" element={<RechercherDemandeJsf />} />
 
             <Route path="/addjsf" element={<AjouterDemandeJsf />} />
         </Routes>

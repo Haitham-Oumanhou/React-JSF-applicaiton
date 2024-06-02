@@ -1,6 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function RechercherDemande({ demandes }) {
+function RechercherDemandeJsf() {
+
+
+  const [demandes, setDemandes] = useState([]);
+  let idCounter = Date.now();
+
+  
+  const fetchDemandes = async () => {
+    const response = await fetch('http://localhost:8080/jsf-1.0-SNAPSHOT/api/demandes');
+    if (response.ok) {
+      const fetchedDemandes  = await response.json();
+      const demandesWithNewIds = fetchedDemandes.map(demande => ({ id: idCounter++, ...demande }));
+      setDemandes(demandesWithNewIds);
+      console.log(demandesWithNewIds);
+    }
+  };
+
+  useEffect(() => {
+    fetchDemandes();
+  }, []);
+
   const [recherche, setRecherche] = useState('');
 
   const handleChange = (e) => {
@@ -44,4 +64,4 @@ function RechercherDemande({ demandes }) {
   );
 }
 
-export default RechercherDemande;
+export default RechercherDemandeJsf;

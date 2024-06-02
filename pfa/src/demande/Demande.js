@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ListeDemandes from './ListeDemandes';
 import AjouterDemande from './AjouterDemande';
 import RechercherDemande from './RechercherDemande';
 import './style.css'
 
 function App() {
-  const [demandes, setDemandes] = useState([
-    { id: 1, nom: "Demande 1", description: "Description de la demande 1" }
-  ]);
+  const [demandes, setDemandes] = useState([]);
+  let idCounter = Date.now();
 
   const ajouterDemande = (nouvelleDemande) => {
-    setDemandes([...demandes, { id: Date.now(), ...nouvelleDemande }]);
+    setDemandes([...demandes, { id: idCounter++, ...nouvelleDemande }]);
   };
+
+  const fetchDemandes = async () => {
+    const response = await fetch('http://localhost:8080/jsf-1.0-SNAPSHOT/api/demandes');
+    if (response.ok) {
+      const fetchedDemandes  = await response.json();
+      const demandesWithNewIds = fetchedDemandes.map(demande => ({ id: idCounter++, ...demande }));
+      setDemandes(demandesWithNewIds);
+      console.log(demandesWithNewIds);
+    }
+  };
+
+  //call fetchDemandes() function when component mounts
+  useEffect(() => {
+    fetchDemandes();
+  }, []);
 
   const rechercherDemande = (recherche) => {
     // Vous pouvez implémenter votre logique de recherche ici

@@ -3,9 +3,6 @@ package com.example.jsf;
 import jakarta.faces.bean.ManagedBean;
 import jakarta.faces.bean.SessionScoped;
 import jakarta.faces.context.FacesContext;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 
 import java.io.StringReader;
 import java.io.Serializable;
@@ -22,7 +19,7 @@ import jakarta.json.JsonReader;
 public class DemandeBean implements Serializable {
 
     private Demande demande = new Demande();
-    private List<Demande> ListDemandes = new ArrayList<>();
+    private static List<Demande> ListDemandes = new ArrayList<>();
     private String searchKeyword;
 
     public Demande getDemande() {
@@ -72,5 +69,7 @@ public class DemandeBean implements Serializable {
 
         //System.out.println("Received data from iframe: " + "nom : "+ jsonData.get("nom") +" description : " + jsonData.get("description"));
     }
+
+
 
 }

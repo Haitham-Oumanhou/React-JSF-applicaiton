@@ -9,19 +9,32 @@
             let url = pageName + ".xhtml";
             document.getElementById('contentFrame').src = url;
         }
+
+        function toggleMenuItem() {
+            let menuItem = document.getElementById('reactSearchMenuItem');
+            menuItem.style.display = (menuItem.style.display === 'none') ? 'block' : 'none';
+        }
     </script>
 
     <p:toolbar style="float: right;">
         <p:toolbarGroup>
-            <p:menu>
+            <!-- Use p:menubar for a horizontal menu -->
+            <p:menubar>
                 <p:submenu label="Actions">
                     <!-- Use onclick event to call loadContent function with respective page name -->
                     <p:menuitem value="Accueil" onclick="loadContent('accueil')" />
                     <p:menuitem value="Ajouter une Demande" onclick="loadContent('ajouterDemande')" />
                     <p:menuitem value="Ajouter une Demande (React)" onclick="loadContent('reactAdd')" />
                     <p:menuitem value="Chercher une Demande" onclick="loadContent('rechercheDemande')" />
+                    <p:menuitem id="reactSearchMenuItem" value="Chercher une Demande (React)" onclick="loadContent('reactSearch')" style="display: none;" />
                 </p:submenu>
-            </p:menu>
+            </p:menubar>
+        </p:toolbarGroup>
+
+        <p:toolbarGroup>
+            <!-- Add a switch to control the visibility of React options -->
+            <h5>React Switch</h5>
+            <p:toggleSwitch offIcon="pi pi-check" onIcon="pi pi-times" onchange="toggleMenuItem()" />
         </p:toolbarGroup>
         <p:separator />
     </p:toolbar>

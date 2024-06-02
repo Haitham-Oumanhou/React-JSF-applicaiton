@@ -14,7 +14,7 @@ function ListeDemandes({ demandes }) {
         <tbody>
           {demandes.map(demande => (
             <tr key={demande.id}>
-              <td>{demande.nom}</td>
+              <td>{demande.about}</td>
               <td>{demande.description}</td>
             </tr>
           ))}
