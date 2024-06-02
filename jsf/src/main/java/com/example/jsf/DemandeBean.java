@@ -3,11 +3,15 @@ package com.example.jsf;
 import jakarta.faces.bean.ManagedBean;
 import jakarta.faces.bean.SessionScoped;
 import jakarta.faces.context.FacesContext;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import java.io.StringReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
