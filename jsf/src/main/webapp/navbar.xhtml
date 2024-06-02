@@ -29,7 +29,8 @@
         <p:toolbarGroup>
             <p:menubar>
                 <p:submenu label="Actions">
-                    <p:menuitem value="Accueil" onclick="loadContent('accueil')"  />
+                    <p:menuitem value="Accueil" onclick="loadContent('accueil')" class="non-react-menu-item"  />
+                    <p:menuitem value="Accueil (React)" onclick="loadContent('reactList')" class="react-menu-item" style="display: none;" />
                     <p:menuitem value="Ajouter une Demande" onclick="loadContent('ajouterDemande')" class="non-react-menu-item" />
                     <p:menuitem value="Ajouter une Demande (React)" onclick="loadContent('reactAdd')" class="react-menu-item" style="display: none;" />
                     <p:menuitem value="Chercher une Demande" onclick="loadContent('rechercheDemande')" class="non-react-menu-item" />

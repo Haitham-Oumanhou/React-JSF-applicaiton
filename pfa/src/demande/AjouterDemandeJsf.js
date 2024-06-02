@@ -9,7 +9,6 @@ function AjouterDemandeJsf() {
 
   const ajouterDemande = () => {
     if (nouvelleDemande.nom.trim() !== '') {
-      // Post message to parent with the data
       window.parent.postMessage(nouvelleDemande, 'http://localhost:8080/jsf-1.0-SNAPSHOT/');
       setNouvelleDemande({ nom: '', description: '' });
     }

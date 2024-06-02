@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import ListeDemandes from './ListeDemandes';
-import AjouterDemande from './AjouterDemande';
-import RechercherDemande from './RechercherDemande';
-import './style.css'
+import React, { useState, useEffect } from "react";
+import ListeDemandes from "./ListeDemandes";
+import AjouterDemande from "./AjouterDemande";
+import RechercherDemande from "./RechercherDemande";
+import "./style.css";
 
 function App() {
   const [demandes, setDemandes] = useState([]);
@@ -13,10 +13,15 @@ function App() {
   };
 
   const fetchDemandes = async () => {
-    const response = await fetch('http://localhost:8080/jsf-1.0-SNAPSHOT/api/demandes');
+    const response = await fetch(
+      "http://localhost:8080/jsf-1.0-SNAPSHOT/api/demandes"
+    );
     if (response.ok) {
-      const fetchedDemandes  = await response.json();
-      const demandesWithNewIds = fetchedDemandes.map(demande => ({ id: idCounter++, ...demande }));
+      const fetchedDemandes = await response.json();
+      const demandesWithNewIds = fetchedDemandes.map((demande) => ({
+        id: idCounter++,
+        ...demande,
+      }));
       setDemandes(demandesWithNewIds);
       console.log(demandesWithNewIds);
     }
@@ -33,7 +38,7 @@ function App() {
     console.log("Recherche en cours pour:", recherche);
   };
 
-  const [selectedAction, setSelectedAction] = useState('');
+  const [selectedAction, setSelectedAction] = useState("");
 
   const handleMenuClick = (action) => {
     setSelectedAction(action);
@@ -41,33 +46,39 @@ function App() {
 
   let content;
   switch (selectedAction) {
-    case 'Liste des demandes':
-      content = <ListeDemandes demandes={demandes} />;
+    case "Liste des demandes":
+      content = <ListeDemandes />;
       break;
-    case 'Ajouter une demande':
+    case "Ajouter une demande":
       content = <AjouterDemande onAjouter={ajouterDemande} />;
       break;
-    case 'Chercher une demande':
+    case "Chercher une demande":
       content = <RechercherDemande demandes={demandes} />;
       break;
     default:
-      content = <div>Bonjour!</div>;
+      content = <ListeDemandes />;
   }
 
   return (
     <div>
-        <div className='menuContainer'>
+      <div className="menuContainer">
         <div className="menu">
-            <h2>Actions</h2>
-            <ul>
-                <li onClick={() => handleMenuClick('Liste des demandes')}>Liste des demandes</li>
-                <li onClick={() => handleMenuClick('Ajouter une demande')}>Ajouter une demande</li>
-                <li onClick={() => handleMenuClick('Chercher une demande')}>Chercher une demande</li>
-            </ul>
+          <h2>Actions</h2>
+          <ul>
+            <li onClick={() => handleMenuClick("Liste des demandes")}>
+              Liste des demandes
+            </li>
+            <li onClick={() => handleMenuClick("Ajouter une demande")}>
+              Ajouter une demande
+            </li>
+            <li onClick={() => handleMenuClick("Chercher une demande")}>
+              Chercher une demande
+            </li>
+          </ul>
         </div>
-        </div>
+      </div>
 
-        <div className="content">{content}</div>
+      <div className="content">{content}</div>
     </div>
   );
 }

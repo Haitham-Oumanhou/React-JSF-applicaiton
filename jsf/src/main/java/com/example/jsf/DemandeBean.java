@@ -45,11 +45,10 @@ public class DemandeBean implements Serializable {
     }
 
     public List<Demande> rechercherDemande() {
-        System.out.println("Executing rechercherDemande() with searchKeyword: " + searchKeyword);
         List<Demande> resultat = new ArrayList<>();
         if (searchKeyword != null && !searchKeyword.isEmpty()) {
             for (Demande d : ListDemandes) {
-                if (d.getAbout() != null && d.getAbout().equalsIgnoreCase(searchKeyword)) {
+                if (d.getAbout() != null && d.getAbout().toLowerCase().contains(searchKeyword.toLowerCase())) {
                     resultat.add(d);
                 }
             }

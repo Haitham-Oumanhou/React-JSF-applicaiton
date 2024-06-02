@@ -34,3 +34,111 @@
     background-color: #ddd;
   }
   
+
+  .tabAjout {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 2%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .tabAjout h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .tabAjout input[type="text"],
+  .tabAjout textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .tabAjout textarea {
+    height: 100px;
+  }
+  
+  .tabAjout button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tabAjout button:hover {
+    background-color: #0056b3;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  @media (max-height: 600px) {
+    .container {
+      min-height: 100%; /* Adjust to 100% for very short screens */
+    }
+  }
+  
+  .searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .tableContainer {
+    width: 100%;
+    max-width: 800px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .tableContainer h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .tableContainer table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableContainer th,
+  .tableContainer td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .tableContainer th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .tableContainer tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .tableContainer tr:hover {
+    background-color: #f1f1f1;
+  }
+  
