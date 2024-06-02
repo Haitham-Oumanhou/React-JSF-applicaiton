@@ -22,21 +22,13 @@ function App() {
         id: idCounter++,
         ...demande,
       }));
-      setDemandes(demandesWithNewIds);
-      console.log(demandesWithNewIds);
+      setDemandes([...demandes, ...demandesWithNewIds]);
     }
   };
 
-  //call fetchDemandes() function when component mounts
   useEffect(() => {
     fetchDemandes();
   }, []);
-
-  const rechercherDemande = (recherche) => {
-    // Vous pouvez implémenter votre logique de recherche ici
-    // Pour cet exemple, je vais simplement afficher dans la console le résultat de la recherche
-    console.log("Recherche en cours pour:", recherche);
-  };
 
   const [selectedAction, setSelectedAction] = useState("");
 

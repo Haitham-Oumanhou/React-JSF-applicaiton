@@ -15,7 +15,6 @@ function ListeDemandes() {
         ...demande,
       }));
       setDemandes(demandesWithNewIds);
-      console.log(demandesWithNewIds);
     }
   };
 

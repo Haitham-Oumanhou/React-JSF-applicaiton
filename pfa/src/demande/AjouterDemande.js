@@ -3,7 +3,7 @@ import "./style.css";
 
 function AjouterDemande({ onAjouter }) {
   const [nouvelleDemande, setNouvelleDemande] = useState({
-    nom: "",
+    about: "",
     description: "",
   });
 
@@ -12,11 +12,27 @@ function AjouterDemande({ onAjouter }) {
   };
 
   const ajouterDemande = () => {
-    if (nouvelleDemande.nom.trim() !== "") {
-      onAjouter(nouvelleDemande);
-      setNouvelleDemande({ nom: "", description: "" });
+    if (nouvelleDemande.about.trim() !== "") {
+      fetch("http://localhost:8080/jsf-1.0-SNAPSHOT/api/demandes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(nouvelleDemande),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          onAjouter(data);
+          setNouvelleDemande({ about: "", description: "" });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
   };
+
+  
+
 
   return (
     <div
@@ -31,9 +47,9 @@ function AjouterDemande({ onAjouter }) {
         <h1>Ajouter une demandes</h1>
         <input
           type="text"
-          name="nom"
+          name="about"
           placeholder="Nom de la demande"
-          value={nouvelleDemande.nom}
+          value={nouvelleDemande.about}
           onChange={handleChange}
         />
         <textarea

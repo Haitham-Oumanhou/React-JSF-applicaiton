@@ -44,6 +44,10 @@ public class DemandeBean implements Serializable {
 
     }
 
+    public void ajouterDemande(Demande demande) {
+        ListDemandes.add(demande);
+    }
+
     public List<Demande> rechercherDemande() {
         List<Demande> resultat = new ArrayList<>();
         if (searchKeyword != null && !searchKeyword.isEmpty()) {
