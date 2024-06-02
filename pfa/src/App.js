@@ -1,8 +1,5 @@
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Demande from './demande/Demande';
-
-import AjouterDemande from './demande/Test';
+import AjouterDemandeJsf from './demande/Test';
+import AjouterDemande from './demande/AjouterDemande'; 
 import ListeDemandes from './demande/ListeDemandes';
 import RechercherDemande from './demande/RechercherDemande';
 import Home from './home/Home';
@@ -16,10 +13,13 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+            
             <Route index element={<Home />} />
             <Route path="/list" element={<ListeDemandes />}/>
             <Route path="/add" element={<AjouterDemande />} />
             <Route path="/search" element={<RechercherDemande />} />
+
+            <Route path="/addjsf" element={<AjouterDemandeJsf />} />
         </Routes>
       </Router>
     </div>

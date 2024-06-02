@@ -12,15 +12,15 @@
 <h:body>
     <h2>Liste des Demandes</h2>
 
-    <h:dataTable value="#{demandeBean.demandes}" var="demande" border="1">
-        <h:column>
+    <p:dataTable value="#{demandeBean.demandes}" var="demande" border="1">
+        <p:column>
             <f:facet name="header">About</f:facet>
             #{demande.about}
-        </h:column>
-        <h:column>
+        </p:column>
+        <p:column>
             <f:facet name="header">Description</f:facet>
             #{demande.description}
-        </h:column>
-    </h:dataTable>
+        </p:column>
+    </p:dataTable>
 </h:body>
 </html>

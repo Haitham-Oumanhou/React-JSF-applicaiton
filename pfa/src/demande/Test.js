@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AjouterDemande() {
+function AjouterDemandeJsf() {
   const [nouvelleDemande, setNouvelleDemande] = useState({ nom: '', description: '' });
 
   const handleChange = (e) => {
@@ -37,4 +37,4 @@ function AjouterDemande() {
   );
 }
 
-export default AjouterDemande;
+export default AjouterDemandeJsf;

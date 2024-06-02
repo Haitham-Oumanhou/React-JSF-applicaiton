@@ -23,14 +23,16 @@
 
                 console.log('data sent to javascript:', data);
 
+                const jsonData = JSON.stringify(data);
+
                 // Call the remote command with the data
-                sendToBean([{ name: 'iframeData', value: data }]);
+                sendToBean([{ name: 'iframeData', value: jsonData }]);
 
 
             }
         </script>
 
-        <iframe id="contentFrame" src="http://localhost:3000/add" frameborder="0" style="height: 600px;"></iframe>
+        <iframe id="reactPage" src="http://localhost:3000/addjsf" frameborder="0" style="height: 600px;"></iframe>
 
 
     </h:body>
