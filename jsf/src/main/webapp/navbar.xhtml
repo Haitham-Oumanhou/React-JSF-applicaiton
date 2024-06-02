@@ -3,7 +3,6 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
 
-    <!-- JavaScript function to load content dynamically -->
     <script>
         function loadContent(pageName) {
             let url = pageName + ".xhtml";
@@ -11,28 +10,36 @@
         }
 
         function toggleMenuItem() {
-            let menuItem = document.getElementById('reactSearchMenuItem');
-            menuItem.style.display = (menuItem.style.display === 'none') ? 'block' : 'none';
+            let reactMenuItems = document.querySelectorAll('.react-menu-item');
+            let nonReactMenuItems = document.querySelectorAll('.non-react-menu-item');
+
+            let reactVisible = reactMenuItems[0].style.display === 'none';
+
+            reactMenuItems.forEach(function(menuItem) {
+                menuItem.style.display = reactVisible ? 'block' : 'none';
+            });
+
+            nonReactMenuItems.forEach(function(menuItem) {
+                menuItem.style.display = reactVisible ? 'none' : 'block';
+            });
         }
     </script>
 
     <p:toolbar style="float: right;">
         <p:toolbarGroup>
-            <!-- Use p:menubar for a horizontal menu -->
             <p:menubar>
                 <p:submenu label="Actions">
-                    <!-- Use onclick event to call loadContent function with respective page name -->
-                    <p:menuitem value="Accueil" onclick="loadContent('accueil')" />
-                    <p:menuitem value="Ajouter une Demande" onclick="loadContent('ajouterDemande')" />
-                    <p:menuitem value="Ajouter une Demande (React)" onclick="loadContent('reactAdd')" />
-                    <p:menuitem value="Chercher une Demande" onclick="loadContent('rechercheDemande')" />
-                    <p:menuitem id="reactSearchMenuItem" value="Chercher une Demande (React)" onclick="loadContent('reactSearch')" style="display: none;" />
+                    <p:menuitem value="Accueil" onclick="loadContent('accueil')"  />
+                    <p:menuitem value="Ajouter une Demande" onclick="loadContent('ajouterDemande')" class="non-react-menu-item" />
+                    <p:menuitem value="Ajouter une Demande (React)" onclick="loadContent('reactAdd')" class="react-menu-item" style="display: none;" />
+                    <p:menuitem value="Chercher une Demande" onclick="loadContent('rechercheDemande')" class="non-react-menu-item" />
+                    <p:menuitem value="Chercher une Demande (React)" onclick="loadContent('reactSearch')" class="react-menu-item" style="display: none;" />
+
                 </p:submenu>
             </p:menubar>
         </p:toolbarGroup>
 
         <p:toolbarGroup>
-            <!-- Add a switch to control the visibility of React options -->
             <h5>React Switch</h5>
             <p:toggleSwitch offIcon="pi pi-check" onIcon="pi pi-times" onchange="toggleMenuItem()" />
         </p:toolbarGroup>
