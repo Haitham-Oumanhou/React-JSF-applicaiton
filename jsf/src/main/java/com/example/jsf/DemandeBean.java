@@ -21,6 +21,7 @@ public class DemandeBean implements Serializable {
     private Demande demande = new Demande();
     private static List<Demande> ListDemandes = new ArrayList<>();
     private String searchKeyword;
+    private int demandeCount = 0;
 
     public Demande getDemande() {
         return demande;
@@ -38,14 +39,24 @@ public class DemandeBean implements Serializable {
         this.searchKeyword = searchKeyword;
     }
 
+    public int getDemandeCount() {
+        return demandeCount;
+    }
+
+    public void setDemandeCount(int demandeCount) {
+        this.demandeCount = demandeCount;
+    }
+
     public void ajouterDemande() {
         ListDemandes.add(demande);
         demande = new Demande();
+        demandeCount++;
 
     }
 
     public void ajouterDemande(Demande demande) {
         ListDemandes.add(demande);
+        demandeCount++;
     }
 
     public List<Demande> rechercherDemande() {
@@ -72,6 +83,7 @@ public class DemandeBean implements Serializable {
 
         //System.out.println("Received data from iframe: " + "nom : "+ jsonData.get("nom") +" description : " + jsonData.get("description"));
     }
+
 
 
 

@@ -5,8 +5,8 @@
 
     <p:panel style="margin: 20px;text-align: center">
         <h1>Gestion de Demande BADR</h1>
+        <h:outputText id="demandeCount" value="Nombres de demandes: #{demandeBean.demandeCount}" />
+        <p:poll interval="1" update="demandeCount" />
     </p:panel>
-
-
 
 </ui:composition>
